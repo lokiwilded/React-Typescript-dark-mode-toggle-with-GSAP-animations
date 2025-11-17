@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react-swc'
 
 
 export default defineConfig({
-  base: '/React-Typescript-dark-mode-toggle-with-GSAP-animations-/',
+  base: '/React-Typescript-dark-mode-toggle-with-GSAP-animations/',
   plugins: [
     react(),
   ],
