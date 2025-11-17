@@ -1,6 +1,6 @@
-# Portfolio Website Frontend
+# React TypeScript Dark Mode Toggle with GSAP Animations
 
-A modern, responsive, and interactive frontend for a personal portfolio website, built with cutting-edge web technologies. This project serves as a foundational template, showcasing a clean architecture, dynamic theming, and smooth animations.
+A modern, responsive, and interactive demonstration of a dynamic dark mode toggle, implemented with React, TypeScript, and Vite. It features smooth, visually engaging transitions powered by GSAP animations, showcasing best practices in front-end development.
 
 ## ✨ Features
 
@@ -38,8 +38,14 @@ Make sure you have [Node.js](https://nodejs.org/en/) (which includes npm) instal
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/lokiwilded/React-Typescript-dark-mode-toggle-with-GSAP-animations-.git
-    cd front
+    # Clone the repository
+    git clone https://github.com/lokiwilded/React-Typescript-dark-mode-toggle-with-GSAP-animations.git
+
+    # Rename the folder to your preferred name (e.g., my-project)
+    mv React-Typescript-dark-mode-toggle-with-GSAP-animations <your-folder-name>
+
+    # Change directory into the new folder
+    cd <your-folder-name>
     ```
 
 2.  **Install dependencies:**
