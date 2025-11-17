@@ -27,7 +27,7 @@ function App() {
         />
 
         <div className="flex-col min-h-screen w-full flex items-center justify-around text-center transition-none bg-white dark:bg-black text-black dark:text-white">
-          <h1 ref={titleRef} className="text-3xl font-bold">My Portfolio</h1>
+          <h1 ref={titleRef} className="text-3xl font-bold">Dynamic Theme Toggle</h1>
           <ThemeButton runThemeAnimation={runThemeAnimation} /> 
         </div>
 
