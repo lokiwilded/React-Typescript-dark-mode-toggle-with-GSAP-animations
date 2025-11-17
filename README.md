@@ -13,7 +13,8 @@ A modern, responsive, and interactive demonstration of a dynamic dark mode toggl
 
 ## 🚀 Live Demo
 
-_Coming Soon!_ This section will be updated with a link to the live demo hosted on GitHub Pages once deployed.
+[click here](https://lokiwilded.github.io/React-Typescript-dark-mode-toggle-with-GSAP-animations) to view the live demo.
+
 
 ## 🛠️ Technologies Used
 
