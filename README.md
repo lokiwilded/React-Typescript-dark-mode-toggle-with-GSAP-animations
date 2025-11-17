@@ -2,6 +2,10 @@
 
 A modern, responsive, and interactive demonstration of a dynamic dark mode toggle, implemented with React, TypeScript, and Vite. It features smooth, visually engaging transitions powered by GSAP animations, showcasing best practices in front-end development.
 
+## 🚀 Live Demo
+
+[click here](https://lokiwilded.github.io/React-Typescript-dark-mode-toggle-with-GSAP-animations) to view the live demo.
+
 ## ✨ Features
 
 *   **Dynamic Theme Toggling:** Seamlessly switch between light and dark modes with a visually engaging curtain animation.
@@ -10,11 +14,6 @@ A modern, responsive, and interactive demonstration of a dynamic dark mode toggl
 *   **Smooth Animations:** Leverages GSAP (GreenSock Animation Platform) for high-performance, fluid UI transitions.
 *   **Robust Testing:** Includes a comprehensive unit testing setup with Vitest and React Testing Library to ensure reliability and maintainability.
 *   **Clean Architecture:** Organized with clear separation of concerns using custom hooks and a component-based structure.
-
-## 🚀 Live Demo
-
-[click here](https://lokiwilded.github.io/React-Typescript-dark-mode-toggle-with-GSAP-animations) to view the live demo.
-
 
 ## 🛠️ Technologies Used
 
