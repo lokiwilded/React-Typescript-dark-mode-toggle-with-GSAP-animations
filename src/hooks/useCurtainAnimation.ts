@@ -2,51 +2,87 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRef, useCallback } from 'react';
 
-
 type ToggleFunction = () => void;
 
-export const useCurtainAnimation = (isDarkMode: boolean, toggleTheme: ToggleFunction) => {
+export const useCurtainAnimation = (
+    isDarkMode: boolean, 
+    toggleTheme: ToggleFunction, 
+    contentRef: React.RefObject<HTMLDivElement>
+) => {
     
-    const containerRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const leftCurtainRef = useRef(null);
     const rightCurtainRef = useRef(null);
     const titleRef = useRef(null);
+    const isAnimating = useRef(false);
+    
     const { contextSafe } = useGSAP({ scope: containerRef });
+
     const runThemeAnimation = useCallback(() => contextSafe(() => { 
+        if (isAnimating.current) {
+            return;
+        }
+        isAnimating.current = true;
+
         const nextMode = !isDarkMode;
-        const tl = gsap.timeline();
-        const curtainColor = '#000';
+        const tl = gsap.timeline({
+            onComplete: () => {
+                isAnimating.current = false;
+                toggleTheme(); // Sync React state AFTER animation is fully complete
+            }
+        });
+        const lightBgColor = '#FFF';
+        const darkBgColor = '#000';
+        const lightTextColor = '#000';
+        const darkTextColor = '#FFF';
+        const animationDuration = 0.6;
 
         if (nextMode === true) {
-            // GOING TO DARK MODE (Curtains CLOSE)
+            // GOING TO DARK MODE
             tl.set([leftCurtainRef.current, rightCurtainRef.current], { 
-                backgroundColor: curtainColor,
                 scaleX: 0 
             })
             .to([leftCurtainRef.current, rightCurtainRef.current], {
                 scaleX: 1,
-                duration: 0.6,
+                duration: animationDuration,
                 ease: "power2.inOut"
             })
-            .call(toggleTheme) 
-            .to({}, { duration: 0.1 }) 
+            .to(contentRef.current, {
+                color: darkTextColor,
+                borderColor: darkTextColor,
+                duration: animationDuration,
+                ease: "power2.inOut"
+            }, "<")
+            .to(containerRef.current, { // Animate background color with GSAP
+                backgroundColor: darkBgColor,
+                duration: animationDuration,
+                ease: "power2.inOut"
+            }, "<")
             .set([leftCurtainRef.current, rightCurtainRef.current], { scaleX: 0 });
 
         } else {
-            // GOING TO LIGHT MODE (Curtains OPEN)
+            // GOING TO LIGHT MODE
             tl.set([leftCurtainRef.current, rightCurtainRef.current], { 
-                backgroundColor: curtainColor,
                 scaleX: 1
             })
-            .call(toggleTheme) 
-            .to({}, { duration: 0.1 })
             .to([leftCurtainRef.current, rightCurtainRef.current], {
                 scaleX: 0,
-                duration: 0.6,
+                duration: animationDuration,
                 ease: "power2.inOut"
-            });
+            })
+            .to(contentRef.current, {
+                color: lightTextColor,
+                borderColor: lightTextColor,
+                duration: animationDuration,
+                ease: "power2.inOut"
+            }, "<")
+            .to(containerRef.current, { // Animate background color with GSAP
+                backgroundColor: lightBgColor,
+                duration: animationDuration,
+                ease: "power2.inOut"
+            }, "<");
         }
-    })(), [isDarkMode, contextSafe, toggleTheme]); 
+    })(), [isDarkMode, contextSafe, toggleTheme, contentRef]); 
     
     // Initial title animation (runs once on load)
     useGSAP(() => {
