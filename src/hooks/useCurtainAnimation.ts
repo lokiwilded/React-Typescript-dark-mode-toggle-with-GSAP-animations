@@ -7,7 +7,7 @@ type ToggleFunction = () => void;
 export const useCurtainAnimation = (
     isDarkMode: boolean, 
     toggleTheme: ToggleFunction, 
-    contentRef: React.RefObject<HTMLDivElement>
+    contentRef: React.RefObject<HTMLDivElement | null>
 ) => {
     
     const containerRef = useRef<HTMLDivElement>(null);
